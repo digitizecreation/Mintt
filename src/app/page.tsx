@@ -1298,7 +1298,6 @@ export default function Home() {
                           delay: j * 0.6,
                           ease: "easeOut",
                         }}
-                        className="absolute w-1 h-1 bg-primary/60 rounded-full"
                       />
                     ))}
                   </div>
@@ -1440,9 +1439,7 @@ export default function Home() {
                         }}
                         style={{
                           left: `${20 + j * 30}%`,
-                          display: "none",
                         }}
-                        className="group-hover:block absolute"
                       />
                     ))}
                   </div>
