@@ -361,46 +361,213 @@ export default function Home() {
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent rounded-full blur-[150px]" />
 
-              {/* Animated 3D Cube */}
-              <div className="absolute inset-0 flex items-center justify-center perspective-1000">
+              {/* 3D Rendered Dancing Meerkat */}
+              <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
                   animate={{
-                    rotateX: [0, 360],
-                    rotateY: [0, 360],
+                    y: [0, -12, 0, -6, 0],
+                    rotate: [-3, 3, -3, 3, -3],
                   }}
                   transition={{
-                    duration: 20,
+                    duration: 1.2,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "easeInOut"
                   }}
-                  className="relative w-48 h-48 transform-style-3d"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  className="relative w-56 h-56"
                 >
-                  {/* Cube faces */}
-                  {[
-                    { transform: 'translateZ(96px)', bg: 'bg-primary/40' },
-                    { transform: 'rotateY(180deg) translateZ(96px)', bg: 'bg-primary/30' },
-                    { transform: 'rotateY(90deg) translateZ(96px)', bg: 'bg-primary/35' },
-                    { transform: 'rotateY(-90deg) translateZ(96px)', bg: 'bg-primary/35' },
-                    { transform: 'rotateX(90deg) translateZ(96px)', bg: 'bg-primary/45' },
-                    { transform: 'rotateX(-90deg) translateZ(96px)', bg: 'bg-primary/25' },
-                  ].map((face, i) => (
-                    <motion.div
-                      key={i}
-                      className={`absolute inset-0 ${face.bg} border border-primary/50 backdrop-blur-sm`}
-                      style={{
-                        transform: face.transform,
-                        backfaceVisibility: 'hidden'
-                      }}
-                    />
-                  ))}
+                  <svg viewBox="0 0 240 280" className="w-full h-full drop-shadow-2xl">
+                    <defs>
+                      {/* 3D Body Gradient */}
+                      <radialGradient id="body3D" cx="30%" cy="20%" r="70%">
+                        <stop offset="0%" stopColor="#FFB07A"/>
+                        <stop offset="40%" stopColor="#E8843C"/>
+                        <stop offset="100%" stopColor="#B8641B"/>
+                      </radialGradient>
 
-                  {/* Inner glow core */}
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-1/4 bg-primary/60 rounded-full blur-xl"
-                  />
+                      {/* 3D Dark Fur */}
+                      <radialGradient id="darkFur3D" cx="30%" cy="30%" r="60%">
+                        <stop offset="0%" stopColor="#C47A2A"/>
+                        <stop offset="100%" stopColor="#8B4513"/>
+                      </radialGradient>
+
+                      {/* Belly Gradient */}
+                      <radialGradient id="belly3D" cx="50%" cy="30%" r="50%">
+                        <stop offset="0%" stopColor="#FFD4B8"/>
+                        <stop offset="100%" stopColor="#F4A460"/>
+                      </radialGradient>
+
+                      {/* Eye Gradient */}
+                      <radialGradient id="eye3D" cx="30%" cy="30%" r="50%">
+                        <stop offset="0%" stopColor="#4A3728"/>
+                        <stop offset="100%" stopColor="#1a1a1a"/>
+                      </radialGradient>
+
+                      {/* Metallic Glow */}
+                      <radialGradient id="metalGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#FF6A00" stopOpacity="0.6"/>
+                        <stop offset="50%" stopColor="#FF8C42" stopOpacity="0.3"/>
+                        <stop offset="100%" stopColor="#FF6A00" stopOpacity="0"/>
+                      </radialGradient>
+
+                      {/* Soft Shadow */}
+                      <radialGradient id="shadow3D" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#000000" stopOpacity="0.4"/>
+                        <stop offset="100%" stopColor="#000000" stopOpacity="0"/>
+                      </radialGradient>
+                    </defs>
+
+                    {/* Ground Shadow */}
+                    <ellipse cx="120" cy="260" rx="50" ry="12" fill="url(#shadow3D)">
+                      <animate attributeName="rx" values="50;42;50" dur="1.2s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="0.4;0.25;0.4" dur="1.2s" repeatCount="indefinite"/>
+                    </ellipse>
+
+                    {/* Glow Aura */}
+                    <circle cx="120" cy="140" r="80" fill="url(#metalGlow)" opacity="0.5">
+                      <animate attributeName="r" values="80;88;80" dur="2s" repeatCount="indefinite"/>
+                      <animate attributeName="opacity" values="0.5;0.7;0.5" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+
+                    {/* Tail (Curved and animated) */}
+                    <path d="M70 200 Q45 175 55 140 Q65 110 80 125" fill="none" stroke="url(#darkFur3D)" strokeWidth="22" strokeLinecap="round">
+                      <animateTransform attributeName="transform" type="rotate" values="0 70 200; 8 70 200; 0 70 200; -6 70 200; 0 70 200" dur="1.2s" repeatCount="indefinite"/>
+                    </path>
+                    {/* Tail tip highlight */}
+                    <path d="M70 200 Q45 175 55 140 Q65 110 80 125" fill="none" stroke="#D2691E" strokeWidth="8" strokeLinecap="round" opacity="0.6">
+                      <animateTransform attributeName="transform" type="rotate" values="0 70 200; 8 70 200; 0 70 200; -6 70 200; 0 70 200" dur="1.2s" repeatCount="indefinite"/>
+                    </path>
+
+                    {/* Main Body (3D sphere-like) */}
+                    <ellipse cx="120" cy="180" rx="45" ry="65" fill="url(#body3D)">
+                      <animate attributeName="ry" values="65;62;65" dur="1.2s" repeatCount="indefinite"/>
+                    </ellipse>
+
+                    {/* Body Highlight */}
+                    <ellipse cx="120" cy="175" rx="25" ry="40" fill="url(#belly3D)" opacity="0.85"/>
+
+                    {/* Body shine */}
+                    <ellipse cx="115" cy="160" rx="12" ry="20" fill="#FFE4D6" opacity="0.4"/>
+
+                    {/* Left Arm */}
+                    <g>
+                      <path d="M85 160 Q55 145 48 120" stroke="url(#body3D)" strokeWidth="18" strokeLinecap="round" fill="none">
+                        <animateTransform attributeName="transform" type="rotate" values="0 85 160; -25 85 160; 0 85 160; 15 85 160; 0 85 160" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+                      {/* Arm highlight */}
+                      <path d="M85 160 Q55 145 48 120" stroke="#FFB07A" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5">
+                        <animateTransform attributeName="transform" type="rotate" values="0 85 160; -25 85 160; 0 85 160; 15 85 160; 0 85 160" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+                      {/* Hand */}
+                      <ellipse cx="48" cy="120" rx="10" ry="10" fill="url(#body3D)">
+                        <animateTransform attributeName="transform" type="rotate" values="0 85 160; -25 85 160; 0 85 160; 15 85 160; 0 85 160" dur="1.2s" repeatCount="indefinite"/>
+                      </ellipse>
+                    </g>
+
+                    {/* Right Arm */}
+                    <g>
+                      <path d="M155 160 Q185 145 192 120" stroke="url(#body3D)" strokeWidth="18" strokeLinecap="round" fill="none">
+                        <animateTransform attributeName="transform" type="rotate" values="0 155 160; 25 155 160; 0 155 160; -15 155 160; 0 155 160" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+                      {/* Arm highlight */}
+                      <path d="M155 160 Q185 145 192 120" stroke="#FFB07A" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5">
+                        <animateTransform attributeName="transform" type="rotate" values="0 155 160; 25 155 160; 0 155 160; -15 155 160; 0 155 160" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+                      {/* Hand */}
+                      <ellipse cx="192" cy="120" rx="10" ry="10" fill="url(#body3D)">
+                        <animateTransform attributeName="transform" type="rotate" values="0 155 160; 25 155 160; 0 155 160; -15 155 160; 0 155 160" dur="1.2s" repeatCount="indefinite"/>
+                      </ellipse>
+                    </g>
+
+                    {/* Left Leg */}
+                    <path d="M95 230 L95 255" stroke="url(#darkFur3D)" strokeWidth="20" strokeLinecap="round"/>
+                    {/* Leg highlight */}
+                    <path d="M92 230 L92 255" stroke="#C47A2A" strokeWidth="8" strokeLinecap="round" opacity="0.5"/>
+                    {/* Foot */}
+                    <ellipse cx="90" cy="258" rx="16" ry="10" fill="url(#darkFur3D)"/>
+                    <ellipse cx="88" cy="256" rx="8" ry="5" fill="#C47A2A" opacity="0.5"/>
+
+                    {/* Right Leg (dancing) */}
+                    <g>
+                      <path d="M145 230 L160 250" stroke="url(#darkFur3D)" strokeWidth="20" strokeLinecap="round">
+                        <animate attributeName="d" values="M145 230 L160 250; M145 230 L170 240; M145 230 L160 250; M145 230 L150 255; M145 230 L160 250" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+                      {/* Foot */}
+                      <ellipse cx="160" cy="252" rx="16" ry="10" fill="url(#darkFur3D)">
+                        <animateTransform attributeName="transform" type="translate" values="0 0; 8 -8; 0 0; -8 5; 0 0" dur="1.2s" repeatCount="indefinite"/>
+                      </ellipse>
+                    </g>
+
+                    {/* Head Group with Animation */}
+                    <motion.g
+                      animate={{
+                        rotate: [-6, 6, -6, 6, -6],
+                      }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{ transformOrigin: '120px 100px' }}
+                    >
+                      {/* Neck */}
+                      <path d="M105 135 L135 135 L140 115 L100 115 Z" fill="url(#body3D)"/>
+
+                      {/* Head Base (3D sphere) */}
+                      <ellipse cx="120" cy="90" rx="38" ry="42" fill="url(#body3D)"/>
+
+                      {/* Head highlight */}
+                      <ellipse cx="115" cy="80" rx="20" ry="25" fill="#FFB07A" opacity="0.4"/>
+
+                      {/* Left Ear */}
+                      <ellipse cx="88" cy="80" rx="10" ry="14" fill="url(#body3D)"/>
+                      <ellipse cx="88" cy="80" rx="5" ry="8" fill="#FFB694"/>
+
+                      {/* Right Ear */}
+                      <ellipse cx="152" cy="80" rx="10" ry="14" fill="url(#body3D)"/>
+                      <ellipse cx="152" cy="80" rx="5" ry="8" fill="#FFB694"/>
+
+                      {/* Face Mask (lighter area) */}
+                      <ellipse cx="120" cy="98" rx="26" ry="24" fill="#FFE4D6"/>
+                      <ellipse cx="120" cy="96" rx="22" ry="20" fill="#FFECD8"/>
+
+                      {/* Left Eye */}
+                      <ellipse cx="108" cy="88" rx="10" ry="12" fill="white"/>
+                      <ellipse cx="108" cy="90" rx="6" ry="7" fill="url(#eye3D)">
+                        <animate attributeName="ry" values="7;0.5;7" dur="4s" repeatCount="indefinite" begin="1s"/>
+                      </ellipse>
+                      <circle cx="110" cy="88" r="3" fill="white" opacity="0.8"/>
+
+                      {/* Right Eye */}
+                      <ellipse cx="132" cy="88" rx="10" ry="12" fill="white"/>
+                      <ellipse cx="132" cy="90" rx="6" ry="7" fill="url(#eye3D)">
+                        <animate attributeName="ry" values="7;0.5;7" dur="4s" repeatCount="indefinite" begin="1s"/>
+                      </ellipse>
+                      <circle cx="134" cy="88" r="3" fill="white" opacity="0.8"/>
+
+                      {/* Eyebrows */}
+                      <path d="M100 75 Q108 72 116 75" stroke="#8B4513" strokeWidth="2" fill="none" opacity="0.6"/>
+                      <path d="M124 75 Q132 72 140 75" stroke="#8B4513" strokeWidth="2" fill="none" opacity="0.6"/>
+
+                      {/* Nose (3D) */}
+                      <ellipse cx="120" cy="108" rx="7" ry="5" fill="#1a1a1a"/>
+                      <ellipse cx="120" cy="107" rx="4" ry="2" fill="#4A4A4A" opacity="0.5"/>
+
+                      {/* Mouth */}
+                      <path d="M112 118 Q120 128 128 118" stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round">
+                        <animate attributeName="d" values="M112 118 Q120 128 128 118; M112 118 Q120 132 128 118; M112 118 Q120 128 128 118" dur="1.2s" repeatCount="indefinite"/>
+                      </path>
+
+                      {/* Whiskers */}
+                      <g stroke="#8B4513" strokeWidth="1" opacity="0.4" fill="none">
+                        <line x1="95" y1="108" x2="75" y2="102"/>
+                        <line x1="95" y1="112" x2="72" y2="110"/>
+                        <line x1="95" y1="116" x2="75" y2="118"/>
+                        <line x1="145" y1="108" x2="165" y2="102"/>
+                        <line x1="145" y1="112" x2="168" y2="110"/>
+                        <line x1="145" y1="116" x2="165" y2="118"/>
+                      </g>
+                    </motion.g>
+                  </svg>
                 </motion.div>
               </div>
 
