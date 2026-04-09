@@ -246,7 +246,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-12 overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
         <GlowOrb className="bg-primary/20 -top-24 -left-24" size={500} />
         <GlowOrb className="bg-primary/10 top-1/2 -right-32" size={600} />
 
@@ -269,7 +269,7 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="font-headline text-7xl md:text-[9rem] lg:text-[11rem] font-black text-white leading-[0.85] tracking-tighter mb-8 relative">
+            <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] xl:text-[11rem] font-black text-white leading-[0.85] tracking-tighter mb-6 md:mb-8 relative">
               <motion.span
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -302,7 +302,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-wrap gap-8 mb-12 py-8 border-y border-white/10"
+              className="flex flex-wrap gap-4 sm:gap-8 mb-8 sm:mb-12 py-6 sm:py-8 border-y border-white/10"
             >
               {[
                 { value: "4.5+", label: "Years" },
@@ -327,13 +327,13 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
-              className="flex flex-wrap gap-6"
+              className="flex flex-wrap gap-4 sm:gap-6"
             >
               <motion.a
                 href="#services"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary text-white px-10 py-5 font-bold text-sm tracking-widest uppercase rounded-full flex items-center gap-3 hover:shadow-[0_0_40px_rgba(255,106,0,0.5)] transition-all"
+                className="bg-primary text-white px-6 sm:px-10 py-4 sm:py-5 font-bold text-xs sm:text-sm tracking-widest uppercase rounded-full flex items-center gap-3 hover:shadow-[0_0_40px_rgba(255,106,0,0.5)] transition-all"
               >
                 Our Services
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -477,7 +477,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5 }}
-                className="absolute top-8 right-0 glass-card p-5 rounded-2xl border border-white/10 shadow-2xl z-20"
+                className="absolute top-8 right-4 sm:right-0 glass-card p-4 sm:p-5 rounded-2xl border border-white/10 shadow-2xl z-20 w-48 sm:w-auto"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30">
@@ -519,7 +519,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.8 }}
-                className="absolute bottom-12 right-12 glass-card p-5 rounded-2xl border border-white/10 shadow-2xl z-20"
+                className="absolute bottom-12 right-4 sm:right-12 glass-card p-4 sm:p-5 rounded-2xl border border-white/10 shadow-2xl z-20 w-40 sm:w-auto"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center border border-green-500/30">
@@ -1619,7 +1619,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-6xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-10"
+            className="font-headline text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-tighter mb-8 md:mb-10"
           >
             LET'S BUILD<br />
             SOMETHING<br />
@@ -1642,7 +1642,7 @@ export default function Home() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-primary text-white px-16 py-8 rounded-full text-xl font-black uppercase tracking-widest hover:shadow-[0_0_60px_rgba(255,106,0,0.6)] transition-all"
+            className="bg-primary text-white px-10 sm:px-16 py-6 sm:py-8 rounded-full text-base sm:text-xl font-black uppercase tracking-widest hover:shadow-[0_0_60px_rgba(255,106,0,0.6)] transition-all"
           >
             Start a Project
           </motion.button>
