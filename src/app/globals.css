@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --surface: #0B0B0B;
+  --surface-container: #151515;
+  --surface-container-high: #1C1B1B;
+  --surface-container-low: #121212;
+  --surface-container-lowest: #0E0E0E;
+  --primary: #ff6a00;
+  --primary-container: #ff6a00;
+  --on-surface: #e5e2e1;
+  --on-primary-container: #ffffff;
+  --outline-variant: #353534;
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-surface: var(--on-surface);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-outline-variant: var(--outline-variant);
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(255, 106, 0, 0.3);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* 3D Transform utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Glass card enhancement */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+}
