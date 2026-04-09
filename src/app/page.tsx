@@ -1298,8 +1298,7 @@ export default function Home() {
                           delay: j * 0.6,
                           ease: "easeOut",
                         }}
-                        style={{ display: "none" }}
-                        className="group-hover:block absolute"
+                        className="absolute w-1 h-1 bg-primary/60 rounded-full"
                       />
                     ))}
                   </div>
