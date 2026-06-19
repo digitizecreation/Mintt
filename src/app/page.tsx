@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import ChatWidget from "./_components/chat-widget";
 
 function GlowOrb({ className, size = 400 }: { className?: string; size?: number }) {
   return (
@@ -582,8 +583,9 @@ export default function Home() {
                     key={i}
                     className="absolute w-3 h-3 bg-primary rounded-full"
                     style={{
-                      top: `${50 + 40 * Math.sin((angle * Math.PI) / 180)}%`,
-                      left: `${50 + 40 * Math.cos((angle * Math.PI) / 180)}%`,
+                      // Round to avoid SSR/CSR float-string drift (hydration warning).
+                      top: `${(50 + 40 * Math.sin((angle * Math.PI) / 180)).toFixed(2)}%`,
+                      left: `${(50 + 40 * Math.cos((angle * Math.PI) / 180)).toFixed(2)}%`,
                     }}
                     animate={{
                       scale: [1, 1.5, 1],
@@ -2012,6 +2014,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <ChatWidget />
     </main>
   );
 }

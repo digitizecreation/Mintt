@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -12,6 +12,15 @@ const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+// Used by the chat widget for its UI copy ("Hi! I'm Aria", FAQ text, etc.).
+// Distinct from the headline/body pair so the widget reads as its own little island.
+const dmSans = DM_Sans({
+  variable: "--font-widget",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${inter.variable} font-body antialiased`} suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${dmSans.variable} font-body antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
