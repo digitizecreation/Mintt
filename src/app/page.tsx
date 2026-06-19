@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import ChatWidget from "./_components/chat-widget";
+import SiteFooter from "./_components/site-footer";
+import SiteNav from "./_components/site-nav";
 
 function GlowOrb({ className, size = 400 }: { className?: string; size?: number }) {
   return (
@@ -210,41 +212,7 @@ export default function Home() {
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-[100] backdrop-blur-xl bg-surface/80 border-b border-white/5">
-        <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 py-6 flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold tracking-tighter text-white font-headline flex items-center gap-2"
-          >
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            Mintt
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="hidden lg:flex gap-10 font-headline tracking-tight text-xs uppercase font-bold"
-          >
-            {["About", "Services", "Clients", "CRM", "Blog", "Contact"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-neutral-400 hover:text-primary transition-colors duration-300">
-                {item}
-              </a>
-            ))}
-          </motion.div>
-
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-primary text-white px-6 py-2.5 text-xs font-bold tracking-widest uppercase rounded-full hover:shadow-[0_0_30px_rgba(255,106,0,0.5)] transition-all"
-          >
-            Start a Project
-          </motion.button>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
@@ -306,10 +274,10 @@ export default function Home() {
               className="flex flex-wrap gap-4 sm:gap-8 mb-8 sm:mb-12 py-6 sm:py-8 border-y border-white/10"
             >
               {[
-                { value: "4.5+", label: "Years" },
-                { value: "30+", label: "Brands" },
-                { value: "14+", label: "Experts" },
-                { value: "4.2★", label: "Rated" },
+                { value: "10+", label: "Years" },
+                { value: "40+", label: "Brands" },
+                { value: "20+", label: "Team" },
+                { value: "100+", label: "Reviews" },
               ].map((stat) => (
                 <motion.div
                   key={stat.label}
@@ -793,7 +761,7 @@ export default function Home() {
 
               <div className="space-y-6 text-neutral-400 text-lg leading-relaxed max-w-xl mb-12 font-light">
                 <p>
-                  Mintt is a women-led startup born from a simple coffee conversation, driven by creativity and ambition. With 4.5+ years of experience and 30+ brands served, we specialize in SEO, web development, SaaS solutions, and Meta ads.
+                  Mintt is a women-led startup born from a simple coffee conversation, driven by creativity and ambition. With 10+ years of experience and 40+ brands served, we specialize in SEO, web development, SaaS solutions, and Meta ads.
                 </p>
                 <p>
                   We focus on building strong digital foundations, creating impactful designs, and delivering measurable growth. Our approach blends innovation, strategy, and deep understanding of modern business needs.
@@ -816,7 +784,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="text-5xl font-headline font-black text-white mb-2 tracking-tighter">30+</div>
+                  <div className="text-5xl font-headline font-black text-white mb-2 tracking-tighter">40+</div>
                   <p className="text-[10px] uppercase tracking-widest font-bold text-neutral-500">Brands Served</p>
                 </motion.div>
               </div>
@@ -1162,8 +1130,8 @@ export default function Home() {
           className="mt-16 flex justify-center gap-16"
         >
           {[
-            { value: "30+", label: "Partner Brands" },
-            { value: "4.5+", label: "Years of Trust" },
+            { value: "40+", label: "Partner Brands" },
+            { value: "10+", label: "Years of Trust" },
             { value: "50+", label: "Projects Delivered" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
@@ -1690,7 +1658,7 @@ export default function Home() {
             </h3>
 
             <p className="text-neutral-400 text-lg mb-12 font-light leading-relaxed">
-              Today, seeing it grow into a trusted digital partner for 30+ brands with a talented team of 14+ is truly fulfilling. Every project reflects our passion, dedication, and commitment to quality.
+              Today, seeing it grow into a trusted digital partner for 40+ brands with a talented team of 20+ is truly fulfilling. Every project reflects our passion, dedication, and commitment to quality.
             </p>
 
             <div className="flex items-center gap-6">
@@ -1834,8 +1802,9 @@ export default function Home() {
 
             <div className="space-y-10">
               {[
-                { icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>, label: "Call Us", value: "+91 8108405170", href: "tel:+918108405170" },
+                { icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>, label: "Call Us", value: "+91 81084 05170", href: "tel:+918108405170" },
                 { icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>, label: "Email Us", value: "contact.mintt.ai@gmail.com", href: "mailto:contact.mintt.ai@gmail.com" },
+                { icon: <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.22 13.63c-.24.68-1.37 1.21-1.91 1.29-.51.08-1.02.24-3.42-.83-2.89-1.23-4.75-4.34-4.89-4.54-.15-.2-1.17-1.55-1.17-2.96 0-1.41.74-2.1.99-2.39.25-.29.68-.38.89-.38.22 0 .43 0 .61.01.19 0 .45-.07.7.54.26.64.88 2.23.96 2.39.08.16.13.35.03.56-.1.21-.15.35-.29.54-.15.19-.31.4-.44.54-.15.15-.3.32-.15.6.15.27.68 1.12 1.45 1.81.99.9 1.82 1.18 2.09 1.31.26.13.42.11.58-.06.16-.18.67-.78.85-1.05.18-.27.36-.23.6-.14.25.09 1.57.74 1.84.87.27.14.45.21.52.32.06.11.06.64-.18 1.32z"/></svg>, label: "WhatsApp", value: "+91 95944 01644", href: "https://wa.me/919594401644" },
               ].map((item) => (
                 <motion.a
                   key={item.label}
@@ -1944,76 +1913,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-surface pt-32 pb-12 px-6 lg:px-12 border-t border-white/5">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-16 mb-24">
-            <div className="col-span-12 md:col-span-5">
-              <div className="text-3xl font-black text-white font-headline mb-8 flex items-center gap-2">
-                <span className="w-3 h-3 bg-primary rounded-full" />
-                Mintt
-              </div>
-              <p className="text-neutral-500 font-light text-base leading-loose max-w-sm mb-10">
-                A 360° marketing & development agency rooted in Vashi, Navi Mumbai. Women-led. MSME registered. 4.2★ rated. From coffee conversations to creative growth.
-              </p>
-              <div className="flex gap-4">
-                {[
-                  { icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>, href: "https://instagram.com/mintt.ai", label: "Instagram" },
-                  { icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.22 13.63c-.24.68-1.37 1.21-1.91 1.29-.51.08-1.02.24-3.42-.83-2.89-1.23-4.75-4.34-4.89-4.54-.15-.2-1.17-1.55-1.17-2.96 0-1.41.74-2.1.99-2.39.25-.29.68-.38.89-.38.22 0 .43 0 .61.01.19 0 .45-.07.7.54.26.64.88 2.23.96 2.39.08.16.13.35.03.56-.1.21-.15.35-.29.54-.15.19-.31.4-.44.54-.15.15-.3.32-.15.6.15.27.68 1.12 1.45 1.81.99.9 1.82 1.18 2.09 1.31.26.13.42.11.58-.06.16-.18.67-.78.85-1.05.18-.27.36-.23.6-.14.25.09 1.57.74 1.84.87.27.14.45.21.52.32.06.11.06.64-.18 1.32z"/></svg>, href: "https://wa.me/918108405170", label: "WhatsApp" },
-                  { icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>, href: "#", label: "YouTube" },
-                ].map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    whileHover={{ y: -3, scale: 1.1 }}
-                    className="w-12 h-12 rounded-2xl glass-card border border-white/10 flex items-center justify-center text-white/60 hover:text-[#25D366] hover:border-[#25D366]/50 transition-all duration-300"
-                    aria-label={social.label}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            <div className="col-span-6 md:col-span-2">
-              <h5 className="text-white font-headline text-xs font-black uppercase tracking-[0.2em] mb-10">Services</h5>
-              <ul className="space-y-6 text-sm text-neutral-500 font-light">
-                {["SEO", "Web Development", "SaaS Solutions", "Meta Ads", "Mintt CRM"].map((item) => (
-                  <li key={item}><a href="#" className="hover:text-primary transition-all">{item}</a></li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="col-span-6 md:col-span-2">
-              <h5 className="text-white font-headline text-xs font-black uppercase tracking-[0.2em] mb-10">Company</h5>
-              <ul className="space-y-6 text-sm text-neutral-500 font-light">
-                {["About Us", "Our Clients", "Our Process", "Why Choose Us", "From the Founder"].map((item) => (
-                  <li key={item}><a href="#" className="hover:text-primary transition-all">{item}</a></li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="col-span-12 md:col-span-3">
-              <h5 className="text-white font-headline text-xs font-black uppercase tracking-[0.2em] mb-10">Contact</h5>
-              <ul className="space-y-6 text-sm text-neutral-500 font-light">
-                {["www.mintt.space", "+91 8108405170", "contact.mintt.ai@gmail.com", "Vashi, Navi Mumbai"].map((item) => (
-                  <li key={item}><a href="#" className="hover:text-primary transition-all">{item}</a></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center py-12 border-t border-white/5 gap-8">
-            <span className="text-xs font-bold text-neutral-700 tracking-[0.1em] uppercase">
-              © 2025 Mintt. All rights reserved. MSME Registered · Vashi
-            </span>
-            <div className="flex gap-8 text-neutral-700 text-[10px] uppercase font-black tracking-widest">
-              {["Privacy", "Terms", "Cookies"].map((item) => (
-                <a key={item} href="#" className="hover:text-primary transition-all">{item}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
       <ChatWidget />
     </main>
   );
